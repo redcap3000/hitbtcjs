@@ -1,0 +1,53 @@
+oandajs
+=======
+
+oanda-js is a node wrapper for the OANDA REST API
+
+Usage
+=====
+
+require oanda-js to begin using
+
+    var OANDA = require('oanda-js');
+    
+To get current live rates:
+
+    OANDA.rate.quote(['EUR_USD'], function(response) {
+        if(response && !response.error) {
+            var bid = response.prices[0].bid;
+            var ask = response.prices[0].ask;
+            // Do something with prices
+            // ...
+        }
+    });
+    
+To open a trade with optional parameters:    
+
+    OANDA.order.open(accountId, 'EUR_USD', 100, 'buy', 0, 0, 'market', { 'stopLoss' : 0.90, 'takeProfit' : 1.102 }, function(openTradeResponse) {
+        if(openTradeResponse && !openTradeResponse.error) {
+            var units = openTradeResponse.units;
+            var side = openTradeResponse.side;
+            var instrument = openTradeResponse.instrument;
+            var time = openTradeResponse.time;
+            // Do something with open trade result
+            // ...
+        }
+    });
+
+
+To handle errors:
+
+    OANDA.order.open(accountId, 'EUR_USD', 100, 'buy', 0, 0, 'market', { 'stopLoss' : 0.90, 'takeProfit' : 1.102 }, function(openTradeResponse) {
+        if(openTradeResponse.error) {
+            var error = openTradeResponse.error;
+            console.log(error.statusCode); //HTTP status code
+            console.log(error.code);       //OANDA error code
+            console.log(error.message);
+        }
+    });
+
+
+Examples
+======
+Check out these example apps that use oanda.js
+* [sim-rates-pane](https://github.com/oanda/simple-rates-panel)

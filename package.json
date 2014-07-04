@@ -1,0 +1,29 @@
+{
+  "name": "oanda-js",
+  "description": "OANDA node.js client",
+  "version": "0.0.2",
+  "private": false,
+  "dependencies": {
+    "underscore": "1.6.0"
+  },
+  "main": "oanda.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/boxbag/oandajs.git"
+  },
+  "keywords": [
+    "oanda",
+    "node",
+    "client"
+  ],
+  "author": "Bo Chen <bochen303@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boxbag/oandajs/issues"
+  },
+  "homepage": "https://github.com/boxbag/oandajs"
+}
