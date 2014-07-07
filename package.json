@@ -1,29 +1,29 @@
 {
-  "name": "oanda-js",
-  "description": "OANDA node.js client",
-  "version": "0.0.2",
+  "name": "hitbtc-js",
+  "description": "HitBTC node.js client",
+  "version": "0.0.1",
   "private": false,
   "dependencies": {
     "underscore": "1.6.0"
   },
-  "main": "oanda.js",
+  "main": "hitbtc.js",
   "devDependencies": {},
   "scripts": {
     "test": "npm test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/boxbag/oandajs.git"
+    "url": "git://github.com/boxbag/hitbtcjs.git"
   },
   "keywords": [
-    "oanda",
+    "hitbtc",
     "node",
     "client"
   ],
   "author": "Bo Chen <bochen303@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/boxbag/oandajs/issues"
+    "url": "https://github.com/boxbag/hitbtcjs/issues"
   },
-  "homepage": "https://github.com/boxbag/oandajs"
+  "homepage": "https://github.com/boxbag/hitbtcjs"
 }
