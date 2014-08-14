@@ -163,7 +163,14 @@ HitBTCClient.prototype.activeOrders = function (pairs, callback) {
 };
 
 HitBTCClient.prototype.newOrder = function (clientOrderId, pair, side, price, quantity, type, timeInForce, callback) {
-    this._post('new_order', 'trading', { clientOrderId: clientOrderId, symbol: pair, side: side, price: price, quantity: quantity, type: type, timeInForce: timeInForce }, callback);
+    var obj = { clientOrderId: clientOrderId, symbol: pair, side: side, quantity: quantity, type: type };
+
+    if (type !== 'market') {
+        obj['price'] = price;
+        obj['timeInForce'] = timeInForce;
+    }
+
+    this._post('new_order', 'trading', obj, callback);
 };
 
 HitBTCClient.prototype.cancelOrder = function (clientOrderId, cancelRequestClientOrderId, pair, side, callback) {
