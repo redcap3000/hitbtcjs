@@ -163,11 +163,10 @@ HitBTCClient.prototype.activeOrders = function (pairs, callback) {
 };
 
 HitBTCClient.prototype.newOrder = function (clientOrderId, pair, side, price, quantity, type, timeInForce, callback) {
-    var obj = { clientOrderId: clientOrderId, symbol: pair, side: side, quantity: quantity, type: type };
+    var obj = { clientOrderId: clientOrderId, symbol: pair, side: side, quantity: quantity, type: type, timeInForce: timeInForce };
 
     if (type !== 'market') {
         obj['price'] = price;
-        obj['timeInForce'] = timeInForce;
     }
 
     this._post('new_order', 'trading', obj, callback);
