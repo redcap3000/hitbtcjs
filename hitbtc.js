@@ -138,6 +138,10 @@ HitBTCClient.prototype.pairs = function (callback) {
     this._get('pairs', 'public', {}, callback);
 };
 
+HitBTCClient.prototype.symbols = function (callback) {
+    this._get('symbols', 'public', {}, callback);
+};
+
 HitBTCClient.prototype.ticker = function (pair, callback) {
     this._get(pair + '/ticker', 'public', {}, callback);
 };
@@ -176,12 +180,14 @@ HitBTCClient.prototype.cancelOrder = function (clientOrderId, cancelRequestClien
     throw new Error('Not Implemented');
 };
 
-HitBTCClient.prototype.trades = function (by, start_index, max_results, symbols, sort, from, till, callback) {
-    throw new Error('Not Implemented');
+HitBTCClient.prototype.trades = function (callback) {
+    this._get('history', 'trades', {}, callback);
+    //throw new Error('Not Implemented');
 };
 
-HitBTCClient.prototype.recentOrders = function  (start_index, max_results, symbols, statuses, callback) {
-    throw new Error('Not Implemented');
+HitBTCClient.prototype.recentOrders = function  (callback) {
+    this._get('history', 'order', {}, callback);
+    //throw new Error('Not Implemented');
 };
 
 /*
