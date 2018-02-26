@@ -2,6 +2,8 @@ var https = require('https');
 var querystring = require('querystring');
 var crypto = require('crypto');
 var _ = require('underscore');
+var _shortid = require('shortid');
+
 
 function HitBTCClient (APIKey, APISecret, APIType) {
     this.APIKey = APIKey;
@@ -165,13 +167,11 @@ HitBTCClient.prototype.activeOrders = function (pairs, callback) {
     this._get('orders/active', 'trading', { symbols: pairs }, callback);
 };
 
-HitBTCClient.prototype.newOrder = function (clientOrderId, pair, side, price, quantity, type, timeInForce, callback) {
-    var obj = { clientOrderId: clientOrderId, symbol: pair, side: side, quantity: quantity, type: type, timeInForce: timeInForce };
-
+HitBTCClient.prototype.newOrder = function (pair, side, price, quantity, type, timeInForce, callback) {
+    var obj = { clientOrderId: _shortid.generate(), symbol: pair, side: side, quantity: quantity, type: type, timeInForce: timeInForce };
     if (type !== 'market') {
         obj['price'] = price;
     }
-
     this._post('new_order', 'trading', obj, callback);
 };
 
