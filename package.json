@@ -4,7 +4,8 @@
   "version": "0.0.3",
   "private": false,
   "dependencies": {
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "shortid": "^2.2.8"
   },
   "main": "hitbtc.js",
   "devDependencies": {},
