@@ -24,7 +24,6 @@ HitBTCClient.prototype._get = function (endpoint, destination, params, callback)
             'User-Agent': 'Mozilla/4.0 (compatible; HitBTC node.js client)'
         }
     };
-
     if (destination !== 'public') {
         this._authorize('get', options, params);
     }
@@ -176,9 +175,17 @@ HitBTCClient.prototype.newOrder = function (clientOrderId, pair, side, price, qu
     this._post('new_order', 'trading', obj, callback);
 };
 
-HitBTCClient.prototype.cancelOrder = function (clientOrderId, cancelRequestClientOrderId, pair, side, callback) {
-    throw new Error('Not Implemented');
+HitBTCClient.prototype.cancelOrder = function (clientOrderId, callback) {
+//    throw new Error('Not Implemented');
+    this._post('cancel_order','trading',{clientOrderId:clientOrderId},callback)
 };
+
+/*
+HitBTCClient.prototype.cancelOrders = function (clientOrderId, cancelRequestClientOrderId, pair, side, callback) {
+//    throw new Error('Not Implemented');
+    this._post('trading','cancel_order',{clientOrderId:clientOrderId})
+};
+*/
 
 HitBTCClient.prototype.trades = function (callback) {
     this._get('history', 'trades', {}, callback);
